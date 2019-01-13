@@ -18,7 +18,7 @@ d3.csv("./playoff_shots.csv", function(data){
                     d3.selectAll("text.playername").remove();
                 })
     shots.append("circle")
-        .attr("r", 3.5)
+        .attr("r", 4)
            .attr("fill", function(d){
                if (d.EVENT_TYPE == "Made Shot" ) {
                     return "green"
@@ -42,12 +42,14 @@ d3.csv("./playoff_shots.csv", function(data){
         .enter()
         .append("option")
            .text(function(d){ return d.key + ": " + d.value + " shots" })
+           .property('value', function(d){ return d.key })
 
     selector   
         .on("change", function(){
             d3.selectAll(".shot")
                 .attr("opacity", "1.0");
-            var value = selector.property("key")
+            var value = selector.property("value");
+            console.log(value);
             if (value != "ALL"){
                 d3.selectAll(".shot")
                     .filter(function(d){ return d.PLAYER_NAME != value; })
