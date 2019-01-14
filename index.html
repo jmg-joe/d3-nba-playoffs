@@ -3,12 +3,15 @@
 <head>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script type="text/javascript" src="shots.js"></script>
+    <script type="text/javascript" src="scripts/shots.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>2018 NBA Playoff Shots</h1>
+    <h1 id="project-title">D3.js Exploration - 2018 NBA Playoff Shots Data</h1>
+    <div id="svg-container">
+        <svg id="canvas" height="850px" width="1200px"></svg>
+    </div>
     <select name="" id="selector"></select>
-    <svg id="canvas" height="1000px" width="1200px"></svg>
 </body>
 </html>

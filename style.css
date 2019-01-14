@@ -1,0 +1,18 @@
+svg {
+    background: url('images/court.png') no-repeat center center;
+    background-size: cover;
+    border: 2px solid;
+
+
+}
+
+#svg-container {
+    margin: 0 auto;
+    text-align:center;
+
+}
+
+#project-title {
+    text-align:center;
+    font-size: 20pt;
+}

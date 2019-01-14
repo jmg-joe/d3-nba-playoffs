@@ -1,4 +1,4 @@
-d3.csv("./playoff_shots.csv", function(data){
+d3.csv("../data/playoff_shots.csv", function(data){
     var shots = d3.select("svg")
         .selectAll("g")
             .data(data)
@@ -6,15 +6,15 @@ d3.csv("./playoff_shots.csv", function(data){
             .append("g")
                 .attr("class", "shot")
                     .attr("transform", function(d){
-                        return "translate(" + ((1.8 * d.LOC_Y) + 40) + "," + ((1.8 * d.LOC_X) + 450) + ")";
+                        return "translate(" + ((1.5 * d.LOC_Y) + 50) + "," + ((1.5 * d.LOC_X) + 370) + ")";
                     })
-            .on("mouseover", function(d){
+            .on("mouseenter", function(d){
                 d3.select(this).raise()
                     .append("text")
                     .attr("class", "playername")
                     .text(d.PLAYER_NAME)
             })
-                .on("mouseout", function(d){
+                .on("mouseleave", function(d){
                     d3.selectAll("text.playername").remove();
                 })
     shots.append("circle")
