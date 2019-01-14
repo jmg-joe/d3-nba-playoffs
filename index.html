@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="scripts/shots.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link href="styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
     <h1 id="project-title">D3.js Exploration - 2018 NBA Playoff Shots Data</h1>
     <div id="svg-container">
-        <svg id="canvas" height="850px" width="1200px"></svg>
+        <svg id="canvas" height="750px" width="1200px"></svg>
     </div>
     <select name="" id="selector"></select>
+    <button type="button" class="btn btn-info btn-lg" id="myBtn">Open Modal</button>
+
+    <div class="modal fade" id="dummyModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+    
+        </div>
+    </div>
 </body>
 </html>

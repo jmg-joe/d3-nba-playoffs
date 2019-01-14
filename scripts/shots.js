@@ -1,3 +1,9 @@
+$('document').ready(function () {
+    jQuery.noConflict();
+    jQuery('#myBtn').click(function () {
+        $('#dummyModal').modal('show');
+    });
+});
 d3.csv("../data/playoff_shots.csv", function(data){
     var shots = d3.select("svg")
         .selectAll("g")
@@ -13,10 +19,17 @@ d3.csv("../data/playoff_shots.csv", function(data){
                     .append("text")
                     .attr("class", "playername")
                     .text(d.PLAYER_NAME)
+                console.log('enter')
             })
-                .on("mouseleave", function(d){
-                    d3.selectAll("text.playername").remove();
-                })
+            .on("mouseleave", function(d){
+                d3.selectAll("text.playername").remove();
+                console.log('leave')
+            })
+            .on("click", function(d){
+                console.log('click')
+                $('#myModal').modal("show");
+            })
+            
     shots.append("circle")
         .attr("r", 4)
            .attr("fill", function(d){

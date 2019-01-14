@@ -1,5 +1,5 @@
 svg {
-    background: url('images/court.png') no-repeat center center;
+    background: url('../images/court.png') no-repeat center center;
     background-size: cover;
     border: 2px solid;
 
@@ -15,4 +15,8 @@ svg {
 #project-title {
     text-align:center;
     font-size: 20pt;
+}
+
+g {
+    cursor: pointer;
 }
