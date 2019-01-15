@@ -1,4 +1,6 @@
 d3.csv("../data/playoff_shots.csv", function(data){
+
+
     var shots = d3.select("svg")
         .selectAll("g")
             .data(data)
@@ -24,7 +26,7 @@ d3.csv("../data/playoff_shots.csv", function(data){
                 $('#myModal').modal();
                 d3.select(".modal-header")
                     .text(d.PLAYER_NAME)
-                d3.select(".modal-body").append("p").text("hello")
+                d3.select(".modal-body").append("p").text()
             })
             
     shots.append("circle")
@@ -43,9 +45,13 @@ d3.csv("../data/playoff_shots.csv", function(data){
         .rollup(function(a){ return a.length; })
         .sortKeys(d3.ascending)
         .entries(data)
-
-    players.unshift({"key": "ALL", "value": d3.sum(players, function(d) {return d.value;})})    
-    var selector = d3.select("#selector")
+    var playoffGames = d3.nest()
+           .key(function(d){ return d.GAME_ID })
+           .entries(data)
+    players.unshift({"key": "ALL", "value": d3.sum(players, function(d) {return d.value;})});
+    playoffGames.unshift({"key":"All Games", "value": d3.sum(playoffGames, function(d){ return d.value;})});
+    var selector = d3.select("#selector");
+    var gameSelector = d3.select('#gameSelector');
     selector
         .selectAll("option")
         .data(players)
@@ -67,5 +73,12 @@ d3.csv("../data/playoff_shots.csv", function(data){
             }
 
         })
+
+    selector
+        .selectAll("option")
+        .data(playoffGames)
+        .enter()
+        .append("option")
+            .text(function(d){ return d.key + ": " + d.value + "idk" })
     console.log(players);
 })
