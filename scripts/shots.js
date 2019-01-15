@@ -22,6 +22,9 @@ d3.csv("../data/playoff_shots.csv", function(data){
             .on("click", function(d){
                 console.log('click')
                 $('#myModal').modal();
+                d3.select(".modal-header")
+                    .text(d.PLAYER_NAME)
+                d3.select(".modal-body").append("p").text("hello")
             })
             
     shots.append("circle")

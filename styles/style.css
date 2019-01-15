@@ -20,3 +20,8 @@ svg {
 g {
     cursor: pointer;
 }
+
+.modal-header {
+    font-size: 30pt;
+    text-align: center;
+}
