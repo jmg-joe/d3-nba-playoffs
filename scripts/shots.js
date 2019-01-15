@@ -1,9 +1,3 @@
-$('document').ready(function () {
-    jQuery.noConflict();
-    jQuery('#myBtn').click(function () {
-        $('#dummyModal').modal('show');
-    });
-});
 d3.csv("../data/playoff_shots.csv", function(data){
     var shots = d3.select("svg")
         .selectAll("g")
@@ -27,7 +21,7 @@ d3.csv("../data/playoff_shots.csv", function(data){
             })
             .on("click", function(d){
                 console.log('click')
-                $('#myModal').modal("show");
+                $('#myModal').modal();
             })
             
     shots.append("circle")
