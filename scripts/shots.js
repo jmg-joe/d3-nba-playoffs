@@ -15,14 +15,11 @@ d3.csv("../data/playoff_shots.csv", function(data){
                     .append("text")
                     .attr("class", "playername")
                     .text(d.PLAYER_NAME)
-                console.log('enter')
             })
             .on("mouseleave", function(d){
                 d3.selectAll("text.playername").remove();
-                console.log('leave')
             })
             .on("click", function(d){
-                console.log('click')
                 $('#myModal').modal();
                 d3.select(".modal-header")
                     .text(d.PLAYER_NAME)
@@ -45,11 +42,14 @@ d3.csv("../data/playoff_shots.csv", function(data){
         .rollup(function(a){ return a.length; })
         .sortKeys(d3.ascending)
         .entries(data)
+
     var playoffGames = d3.nest()
            .key(function(d){ return d.GAME_ID })
            .entries(data)
+    console.log(playoffGames);
+
     players.unshift({"key": "ALL", "value": d3.sum(players, function(d) {return d.value;})});
-    playoffGames.unshift({"key":"All Games", "value": d3.sum(playoffGames, function(d){ return d.value;})});
+    // playoffGames.unshift({"key":"All Games", "value": d3.sum(playoffGames, function(d){ return d.value;})});
     var selector = d3.select("#selector");
     var gameSelector = d3.select('#gameSelector');
     selector
@@ -74,11 +74,25 @@ d3.csv("../data/playoff_shots.csv", function(data){
 
         })
 
-    selector
+    gameSelector
         .selectAll("option")
         .data(playoffGames)
         .enter()
         .append("option")
-            .text(function(d){ return d.key + ": " + d.value + "idk" })
+            .text(function(d){ return d.key + ' ' + d.values[0].HTM + ' vs. ' + d.values[0].VTM})
+            .property('value', function(d){ return d.key })
+    
+    gameSelector
+        .on("change", function(){
+            d3.selectAll(".shot")
+                .attr("opacity", "1.0");
+            var value = gameSelector.property("value")
+            console.log(value);
+            if (value != "ALL"){
+                d3.selectAll(".shot")
+                    .filter(function(d){ return d.GAME_ID != value; })
+                    .attr("opacity", "0.1")
+            }
+        })
     console.log(players);
 })
