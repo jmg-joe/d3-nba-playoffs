@@ -1,8 +1,17 @@
+body {
+    background-color: #f7f7f7;
+}
 svg {
     background: url('../images/court.png') no-repeat center center;
     background-size: cover;
-    border: 2px solid;
+    border-right: 3px solid;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    border-radius: 5px;
 
+
+}
+svg:hover{
+    box-shadow: 0 13px 22px rgba(0,0,0,0.19), 0 8px 8px rgba(0,0,0,0.23);
 
 }
 
