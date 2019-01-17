@@ -34,3 +34,13 @@ g {
     font-size: 30pt;
     text-align: center;
 }
+
+
+#test {
+    text-align: center;
+    font-size: 18pt;
+    letter-spacing: 3px
+}
+.statheadline {
+    text-align: center;
+}

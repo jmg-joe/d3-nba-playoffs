@@ -1,3 +1,8 @@
+$(document).ready(function(){
+    $('#closeButton').on('click', function(){
+        d3.selectAll("text.statHeadline").remove();
+    })
+})
 d3.csv("../data/playoff_shots.csv", function(data){
 
 
@@ -10,7 +15,7 @@ d3.csv("../data/playoff_shots.csv", function(data){
         .attr("transform",  function(d){
             return translateCoordsOnSvg(d)
         })
-
+        // event listeners
         .on("mouseenter", function (d) {
             addPlayerDescription(this, d)
         })
@@ -115,19 +120,25 @@ function triggerPlayerModal(d){
     $('#myModal').modal();
     d3.select(".modal-header")
         .text(d.PLAYER_NAME)
-    d3.select(".modal-body").append("p").text("test")
+    d3.select(".modal-body")
+        .append("p").text(ordinalSuffixOf(d.PERIOD) + ' Quarter').attr("class", "statheadline")
+    d3.select(".modal-body")
+        .append("p").text(d.MINUTES_REMAINING + ':' + d.SECONDS_REMAINING + ' remaining in the quarter').attr("class", "statheadline")
+}
+
+
+function ordinalSuffixOf(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
 }
 //event listeners end
-
-
-
-function work(d){
-    d3.selectAll(".shot")
-                .attr("opacity", "1.0");
-            var value = selector.property("value");
-            if (value != "ALL"){
-                d3.selectAll(".shot")
-                    .filter(function(d){ return d.PLAYER_NAME != value; })
-                    .attr("opacity", "0.1");
-            }
-}
